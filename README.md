@@ -1,4 +1,14 @@
-# 🚀 Quick Start Guide - Trainer Rahul's Pokédex Portfolio
+# � Quick Start Guide - Trainer Rahul's Pokédex Portfolio
+
+## 🌐 Live Demo
+
+**🔗 View Live Portfolio:** [https://rahul-meena01.github.io/mydex-portfolio/](https://rahul-meena01.github.io/mydex-portfolio/)
+
+[![Portfolio Screenshot](ss/portfo.png)](https://rahul-meena01.github.io/mydex-portfolio/)
+
+---
+
+## 📸 Portfolio Preview🚀 Quick Start Guide - Trainer Rahul's Pokédex Portfolio
 
 ## � Portfolio Preview
 
