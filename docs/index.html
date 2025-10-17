@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trainer Rahul's Pokédex</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="particles" id="particles"></div>
+
+    <div class="pokedex-container">
+        <header class="pokedex-header">
+            <h1 class="trainer-title">Trainer Rahul's Pokédex</h1>
+            <div class="pokedex-lights">
+                <div class="light red"></div>
+                <div class="light yellow"></div>
+                <div class="light green"></div>
+            </div>
+        </header>
+
+        <nav class="pokedex-nav">
+            <button class="nav-btn active" data-section="landing">Trainer Card</button>
+            <button class="nav-btn" data-section="projects">Projects</button>
+            <button class="nav-btn" data-section="badges">Badges</button>
+            <button class="nav-btn" data-section="moves">Moves List</button>
+            <button class="nav-btn" data-section="skills">Skills</button>
+            <button class="nav-btn" data-section="resume">Resume</button>
+            <button class="nav-btn" data-section="contact">Contact</button>
+        </nav>
+
+        <main class="pokedex-main">
+            <div class="pokedex-screen">
+                <section id="landing" class="section active">
+                    <div class="trainer-card-enhanced">
+                        <div class="trainer-card-header">
+                            <div class="pokeball-design">
+                                <div class="pokeball-top"></div>
+                                <div class="pokeball-center">
+                                    <div class="pokeball-button"></div>
+                                </div>
+                                <div class="pokeball-bottom"></div>
+                            </div>
+                            <h1 class="trainer-card-title">Trainer ID Card</h1>
+                        </div>
+
+                        <div class="trainer-card-body">
+                            <div class="trainer-avatar-section">
+                                <div class="trainer-avatar-frame">
+                                    <div class="avatar-glow"></div>
+                                    <img src="https://i.pinimg.com/736x/39/66/35/3966359026acda12efe2368bca73f4f3.jpg"
+                                        alt="Trainer Rahul Avatar" class="trainer-avatar-img" />
+                                </div>
+                                <div class="trainer-basic-info">
+                                    <h2 class="trainer-name-enhanced">Rahul</h2>
+                                    <p class="trainer-title-enhanced">Full-Stack Web Developer</p>
+                                    <div class="trainer-level-badge">
+                                        <span class="level-text">Level</span>
+                                        <span class="level-number">21</span>
+                                    </div>
+                                    <div class="social-links">
+                                        <a href="https://github.com/Rahul-Meena01" target="_blank" class="social-link">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                        <a href="https://linkedin.com/in/rahul-meena-m3401" target="_blank"
+                                            class="social-link">
+                                            <i class="fab fa-linkedin"></i>
+                                        </a>
+                                        <a href="https://instagram.com/why______dude" target="_blank"
+                                            class="social-link">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    </div>
+
+                                    <div id="like-section"
+                                        style="margin: 32px 0 0 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                                        <button id="like-btn" class="like-btn big-stylish">
+                                            <span id="like-heart" class="like-heart">♡</span>
+                                        </button>
+                                        <span id="like-count" class="like-count big-count">0</span>
+                                        <span id="like-loading" class="like-loading"
+                                            style="display:none; margin-top:10px; font-size:16px; color:#888;">Loading...</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="trainer-info-section">
+                                <div class="trainer-stats-grid">
+                                    <div class="stat-card">
+                                        <div class="stat-icon">🏆</div>
+                                        <div class="stat-content">
+                                            <div class="stat-value">5+</div>
+                                            <div class="stat-label">Projects</div>
+                                        </div>
+                                    </div>
+                                    <div class="stat-card">
+                                        <div class="stat-icon">⚡</div>
+                                        <div class="stat-content">
+                                            <div class="stat-value">1</div>
+                                            <div class="stat-label">Years Exp</div>
+                                        </div>
+                                    </div>
+                                    <div class="stat-card">
+                                        <div class="stat-icon">🌟</div>
+                                        <div class="stat-content">
+                                            <div class="stat-value">10+</div>
+                                            <div class="stat-label">Skills</div>
+                                        </div>
+                                    </div>
+                                    <div class="stat-card">
+                                        <div class="stat-icon">📍</div>
+                                        <div class="stat-content">
+                                            <div class="stat-value">Jaipur</div>
+                                            <div class="stat-label">Location</div>
+                                        </div>
+                                    </div>
+                                    <div class="stat-card" id="visitors-stat">
+                                        <div class="stat-icon">👥</div>
+                                        <div class="stat-content">
+                                            <div class="stat-value" id="visitors-count">...</div>
+                                            <div class="stat-label">Visitors</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="trainer-specialty">
+                                    <h3 class="specialty-title">Specialty</h3>
+                                    <div class="specialty-tags">
+                                        <span class="specialty-tag react">React.js</span>
+                                        <span class="specialty-tag node">Node.js</span>
+                                        <span class="specialty-tag mongo">MongoDB</span>
+                                        <span class="specialty-tag express">Express.js</span>
+                                    </div>
+                                </div>
+
+                                <div class="trainer-bio-enhanced">
+                                    <h3 class="bio-title">About Me</h3>
+                                    <p class="bio-text">
+                                        Passionate Full-Stack Developer specializing in MERN stack with 1 years of
+                                        experience
+                                        creating responsive, high-performance web applications. I love turning ideas
+                                        into
+                                        digital reality through clean code and innovative solutions.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="trainer-card-footer">
+                            <p class="navigation-hint">
+                                🎮 Explore my Pokédex to discover projects, skills, and achievements!
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="projects" class="section">
+                    <h2 class="section-header">Pokédex Projects</h2>
+                    <div class="projects-grid"></div>
+                </section>
+
+                <section id="badges" class="section">
+                    <h2 class="section-header">Gym Badges</h2>
+                    <div class="badges-grid"></div>
+                </section>
+
+                <section id="moves" class="section">
+                    <h2 class="section-header">Moves List</h2>
+                    <div class="moves-list">
+                        <div class="moves-category">
+                            <h3 class="moves-category-title">Frontend Moves</h3>
+                            <div class="moves-grid"></div>
+                        </div>
+                        <div class="moves-category">
+                            <h3 class="moves-category-title">Backend Moves</h3>
+                            <div class="moves-grid"></div>
+                        </div>
+                        <div class="moves-category">
+                            <h3 class="moves-category-title">Development Tools</h3>
+                            <div class="moves-grid"></div>
+                        </div>
+                        <div class="moves-category">
+                            <h3 class="moves-category-title">Soft Skills</h3>
+                            <div class="moves-grid"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="skills" class="section">
+                    <h2 class="section-header">Technical Skills</h2>
+                    <div class="skills-container"></div>
+                </section>
+
+                <section id="resume" class="section">
+                    <h2 class="section-header">Resume Details</h2>
+                    <div class="resume-container">
+                        <div class="resume-column"></div>
+                        <div class="resume-column"></div>
+                    </div>
+                    <a href="#" class="download-resume">
+                        <i class="fas fa-download"></i> Download Full Resume (PDF)
+                    </a>
+                </section>
+
+                <section id="contact" class="section">
+                    <h2 class="section-header">Contact Me</h2>
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Your Name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="your@email.com" />
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required
+                                placeholder="Type your message..."></textarea>
+                        </div>
+                        <button type="submit" class="contact-btn">Send Message</button>
+                        <div id="contact-status" class="contact-status"></div>
+                    </form>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div class="project-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+        </div>
+    </div>
+
+    <div class="badge-modal">
+        <div class="badge-modal-content">
+            <span class="close-badge-modal">&times;</span>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
