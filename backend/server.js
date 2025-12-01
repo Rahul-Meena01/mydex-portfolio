@@ -1,7 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const bodyParser = require("body-parser");
+const helmet = require("helmet");
+const rateLimit = require("express-rate-limit");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
@@ -12,6 +13,26 @@ const contactRoutes = require("./routes/contact");
 const analyticsRoutes = require("./routes/analytics");
 const likesRoutes = require("./routes/likes");
 const { trackVisitMiddleware } = require("./middleware/analyticsMiddleware");
+
+// Trust proxy so correct client IP is used behind proxies (Render/Heroku)
+app.set("trust proxy", true);
+
+// Security headers with helmet
+app.use(
+  helmet({
+    contentSecurityPolicy: false, // Allow inline scripts for our frontend
+    crossOriginEmbedderPolicy: false, // Allow external resources (fonts, images)
+  })
+);
+
+// Rate limiting for analytics endpoints to prevent abuse
+const analyticsLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per windowMs
+  message: "Too many requests from this IP, please try again later.",
+  standardHeaders: true, // Return rate limit info in `RateLimit-*` headers
+  legacyHeaders: false, // Disable `X-RateLimit-*` headers
+});
 
 // CORS configuration - Allow requests from configured origins
 const allowedOrigins = process.env.CORS_ORIGINS
@@ -48,22 +69,21 @@ console.log("🔐 CORS enabled for origins:", allowedOrigins);
 
 app.use(cors(corsOptions));
 app.use(cookieParser());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// Use Express built-in body parsers (avoid double-parsing)
+app.use(express.json({ limit: "1mb" }));
+app.use(express.urlencoded({ extended: true, limit: "1mb" }));
 
 // Connect to MongoDB
 connectDB();
 
-// Analytics tracking middleware (optional - comment out if not needed)
-// This will automatically track all page visits
-// app.use(trackVisitMiddleware); // Enable if analytics tracking is needed
+// Analytics tracking middleware: automatically track non-API page visits
+// Note: This is safe; middleware skips API and static asset paths.
+app.use(trackVisitMiddleware);
 
 // Routes
 app.use("/api/health", healthRoutes);
 app.use("/api/contact", contactRoutes);
-app.use("/api/analytics", analyticsRoutes);
+app.use("/api/analytics", analyticsLimiter, analyticsRoutes); // Rate-limited analytics
 app.use("/api/likes", likesRoutes);
 
 // Root endpoint
@@ -119,4 +139,10 @@ process.on("unhandledRejection", (err) => {
   console.error("Unhandled Promise Rejection:", err);
   // Close server & exit process
   process.exit(1);
+});
+
+// Handle SIGTERM for graceful shutdown in cloud environments
+process.on("SIGTERM", () => {
+  console.log("SIGTERM received: shutting down server gracefully");
+  process.exit(0);
 });

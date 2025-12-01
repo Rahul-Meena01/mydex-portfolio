@@ -4,10 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Trainer Rahul's Pokédex Portfolio — projects, skills, badges, and contact form powered by a MERN backend with analytics.">
+    <meta name="theme-color" content="#e3350d">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 
     <title>Trainer Rahul's Pokédex</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"
+        type="image/png">
 </head>
 
 <body>
@@ -23,14 +30,14 @@
             </div>
         </header>
 
-        <nav class="pokedex-nav">
-            <button class="nav-btn active" data-section="landing">Trainer Card</button>
-            <button class="nav-btn" data-section="projects">Projects</button>
-            <button class="nav-btn" data-section="badges">Badges</button>
-            <button class="nav-btn" data-section="moves">Moves List</button>
-            <button class="nav-btn" data-section="skills">Skills</button>
-            <button class="nav-btn" data-section="resume">Resume</button>
-            <button class="nav-btn" data-section="contact">Contact</button>
+        <nav class="pokedex-nav" role="navigation" aria-label="Primary">
+            <button class="nav-btn active" data-section="landing" aria-controls="landing">Trainer Card</button>
+            <button class="nav-btn" data-section="projects" aria-controls="projects">Projects</button>
+            <button class="nav-btn" data-section="badges" aria-controls="badges">Badges</button>
+            <button class="nav-btn" data-section="moves" aria-controls="moves">Moves List</button>
+            <button class="nav-btn" data-section="skills" aria-controls="skills">Skills</button>
+            <button class="nav-btn" data-section="resume" aria-controls="resume">Resume</button>
+            <button class="nav-btn" data-section="contact" aria-controls="contact">Contact</button>
         </nav>
 
         <main class="pokedex-main">
@@ -53,7 +60,7 @@
                                 <div class="trainer-avatar-frame">
                                     <div class="avatar-glow"></div>
                                     <img src="https://i.pinimg.com/736x/39/66/35/3966359026acda12efe2368bca73f4f3.jpg"
-                                        alt="Trainer Rahul Avatar" class="trainer-avatar-img" />
+                                        alt="Trainer Rahul Avatar" class="trainer-avatar-img" loading="lazy" />
                                 </div>
                                 <div class="trainer-basic-info">
                                     <h2 class="trainer-name-enhanced">Rahul</h2>
@@ -63,25 +70,28 @@
                                         <span class="level-number">21</span>
                                     </div>
                                     <div class="social-links">
-                                        <a href="https://github.com/Rahul-Meena01" target="_blank" class="social-link">
+                                        <a href="https://github.com/Rahul-Meena01" target="_blank"
+                                            rel="noopener noreferrer" class="social-link" aria-label="GitHub profile">
                                             <i class="fab fa-github"></i>
                                         </a>
                                         <a href="https://linkedin.com/in/rahul-meena-m3401" target="_blank"
-                                            class="social-link">
+                                            rel="noopener noreferrer" class="social-link" aria-label="LinkedIn profile">
                                             <i class="fab fa-linkedin"></i>
                                         </a>
                                         <a href="https://instagram.com/why______dude" target="_blank"
-                                            class="social-link">
+                                            rel="noopener noreferrer" class="social-link"
+                                            aria-label="Instagram profile">
                                             <i class="fab fa-instagram"></i>
                                         </a>
                                     </div>
 
                                     <div id="like-section"
                                         style="margin: 32px 0 0 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                                        <button id="like-btn" class="like-btn big-stylish">
+                                        <button id="like-btn" class="like-btn big-stylish" aria-live="polite"
+                                            aria-label="Like this portfolio">
                                             <span id="like-heart" class="like-heart">♡</span>
                                         </button>
-                                        <span id="like-count" class="like-count big-count">0</span>
+                                        <span id="like-count" class="like-count big-count" aria-live="polite">0</span>
                                         <span id="like-loading" class="like-loading"
                                             style="display:none; margin-top:10px; font-size:16px; color:#888;">Loading...</span>
                                     </div>
@@ -89,7 +99,7 @@
                             </div>
 
                             <div class="trainer-info-section">
-                                <div class="trainer-stats-grid">
+                                <div class="trainer-stats-grid" role="list" aria-label="Trainer statistics">
                                     <div class="stat-card">
                                         <div class="stat-icon">🏆</div>
                                         <div class="stat-content">
@@ -201,7 +211,7 @@
                         <div class="resume-column"></div>
                         <div class="resume-column"></div>
                     </div>
-                    <a href="#" class="download-resume">
+                    <a href="#" class="download-resume" aria-label="Download resume">
                         <i class="fas fa-download"></i> Download Full Resume (PDF)
                     </a>
                 </section>
@@ -242,8 +252,11 @@
         </div>
     </div>
 
-    <script src="js/config.js"></script>
-    <script src="js/script.js"></script>
+    <!-- Load config first, then analytics tracker, then main script (deferred for performance) -->
+    <script src="js/config.js" defer></script>
+    <script src="js/analytics-tracker.js" defer></script>
+    <script src="js/script.js" defer></script>
+    <noscript>Your browser has JavaScript disabled. Some features of this Pokédex require JavaScript.</noscript>
 </body>
 
 </html>

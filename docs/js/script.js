@@ -543,6 +543,14 @@ const projectsGrid = document.querySelector(".projects-grid");
 const badgesGrid = document.querySelector(".badges-grid");
 const projectModal = document.querySelector(".project-modal");
 const badgeModal = document.querySelector(".badge-modal");
+if (projectModal) {
+  projectModal.setAttribute("role", "dialog");
+  projectModal.setAttribute("aria-modal", "true");
+}
+if (badgeModal) {
+  badgeModal.setAttribute("role", "dialog");
+  badgeModal.setAttribute("aria-modal", "true");
+}
 const closeModalButtons = document.querySelectorAll(
   ".close-modal, .close-badge-modal"
 );
@@ -596,9 +604,7 @@ function renderProjects() {
             <div class="project-number">${project.number}</div>
             <div class="project-name">${project.name}</div>
             <div class="project-image">
-                <img src="${project.image}" alt="${
-      project.name
-    } Project Screenshot" loading="lazy">
+              <img src="${project.image}" alt="${project.name} Project Screenshot" loading="lazy" decoding="async">
             </div>
             <div class="project-types">
                 ${project.types
@@ -1210,8 +1216,10 @@ function initPortfolio() {
     // Close modal events
     closeModalButtons.forEach((button) => {
       if (button.classList.contains("close-modal")) {
+        button.setAttribute("aria-label", "Close project modal");
         button.addEventListener("click", closeProjectModal);
       } else {
+        button.setAttribute("aria-label", "Close badge modal");
         button.addEventListener("click", closeBadgeModal);
       }
     });

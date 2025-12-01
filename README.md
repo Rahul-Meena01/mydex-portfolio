@@ -13,11 +13,14 @@ A modern, Pokémon-themed portfolio showcasing my full-stack web development ski
 - 🎨 Pokémon-inspired interactive UI with animations
 - 📧 Contact form with MongoDB backend and email notifications
 - 📊 Visitor analytics (unique visitors, page views, sessions)
-- 📱 Fully responsive & accessible design
+- 📱 Fully responsive & accessible design (ARIA labels, keyboard navigation)
 - ❤️ Real-time like counter
 - 🎯 Smooth animations and modal dialogs
 - 🖨️ Print-friendly resume section
-- 🔍 SEO & social sharing optimized
+- 🔍 SEO & social sharing optimized (meta tags, Open Graph)
+- 🔒 Security headers with Helmet.js
+- 🚦 Rate limiting on analytics endpoints
+- ⚡ Performance optimized (lazy loading, async decoding, deferred scripts)
 
 ---
 
@@ -34,6 +37,8 @@ A modern, Pokémon-themed portfolio showcasing my full-stack web development ski
 - **Node.js** - JavaScript runtime
 - **Express.js** - Web application framework
 - **MongoDB** - NoSQL database with Mongoose ODM
+- **Helmet** - Security headers middleware
+- **Express Rate Limit** - API rate limiting
 - **Nodemailer** - Email notifications
 - **GeoIP-Lite** - IP geolocation
 - **UA-Parser-JS** - User agent parsing
@@ -193,16 +198,16 @@ Frontend will be available at `http://localhost:3000`
 
 ```
 project9/
-├── frontend/                 # Frontend application
-│   ├── index.html           # Main HTML file
+├── docs/                    # Frontend application (GitHub Pages)
+│   ├── index.html          # Main HTML file
 │   ├── css/
-│   │   └── styles.css       # All styles
+│   │   └── styles.css      # All styles with animations
 │   ├── js/
-│   │   ├── config.js        # Configuration (API URLs)
-│   │   ├── script.js        # Main application logic
-│   │   └── analytics-tracker.js  # Analytics tracking
+│   │   ├── config.js       # Configuration (API URLs, feature flags)
+│   │   ├── script.js       # Main application logic
+│   │   └── analytics-tracker.js  # Client-side analytics tracking
 │   └── assets/
-│       └── images/          # Project screenshots
+│       └── images/         # Project screenshots
 │
 ├── backend/                 # Backend API
 │   ├── server.js           # Express server setup
@@ -274,51 +279,62 @@ project9/
 
 ### Deploy Frontend (GitHub Pages)
 
-1. **Update Configuration**
+1. **Configuration is Auto-Detected**
+
+   - `docs/js/config.js` automatically detects production environment
+   - Update production API URL if using custom backend:
 
    ```javascript
-   // frontend/js/config.js
-   API_BASE_URL: "https://your-backend.onrender.com/api";
+   // docs/js/config.js (line 9)
+   : "https://your-custom-backend.com/api"
    ```
 
 2. **Push to GitHub**
 
    ```bash
    git add .
-   git commit -m "Updated API URL for production"
+   git commit -m "Deploy portfolio updates"
    git push origin main
    ```
 
 3. **Enable GitHub Pages**
 
-   - Go to repository Settings
-   - Navigate to Pages section
+   - Go to repository Settings → Pages
    - Source: Deploy from branch `main`
-   - Folder: `/frontend` or `/` (root)
+   - Folder: `/docs`
    - Click Save
+   - Your site will be live at `https://yourusername.github.io/mydex-portfolio/`
 
-4. **Update CORS**
-   - Add your GitHub Pages URL to backend `.env`:
+4. **Update CORS in Backend**
+   - Add your GitHub Pages URL to backend `.env` or Render environment variables:
    ```env
-   CORS_ORIGINS=https://yourusername.github.io
+   CORS_ORIGINS=https://yourusername.github.io,https://yourusername.github.io/mydex-portfolio
    ```
 
 ---
 
 ## 🔧 Configuration
 
-### Frontend Configuration (`frontend/js/config.js`)
+### Frontend Configuration (`docs/js/config.js`)
 
 ```javascript
 const CONFIG = {
-  API_BASE_URL: "http://localhost:5000/api", // Local
-  // API_BASE_URL: 'https://your-backend.onrender.com/api',  // Production
+  // Auto-detects localhost vs production
+  API_BASE_URL:
+    window.location.hostname === "localhost"
+      ? "http://localhost:5000/api"
+      : "https://mydex-portfolio-backend.onrender.com/api",
 
   FEATURES: {
     ANALYTICS_ENABLED: true,
     LIKE_BUTTON_ENABLED: true,
     CONTACT_FORM_ENABLED: true,
     VISITORS_COUNT_ENABLED: true,
+  },
+
+  ANALYTICS: {
+    SESSION_DURATION: 30 * 60 * 1000, // 30 minutes
+    DEBUG: window.location.hostname === "localhost",
   },
 };
 ```
@@ -461,4 +477,13 @@ MIT License — Free to use and adapt for your own portfolio.
 
 **⭐ If you like this project, give it a star!**
 
-_Last updated: October 2025 — Production Ready_
+## 🔐 Security Features
+
+- Helmet.js for HTTP security headers
+- Rate limiting on analytics endpoints (100 req/15min per IP)
+- Input validation with express-validator
+- MongoDB injection protection via Mongoose
+- Trust proxy configuration for accurate IP tracking
+- CORS with configurable allowed origins
+
+_Last updated: December 2025 — Production Ready & Hardened_
