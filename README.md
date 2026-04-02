@@ -60,37 +60,26 @@ A modern, Pokémon-themed portfolio showcasing my full-stack web development ski
 - MongoDB Atlas account (free tier works perfectly)
 - Git
 
-### Automated Setup (Recommended)
-
-**Windows:**
-
-```bash
-# Double-click start.bat
-# OR run in terminal:
-start.bat
-```
-
-**Mac/Linux:**
-
-```bash
-chmod +x start.sh
-./start.sh
-```
-
-The script will:
-
-1. Install dependencies
-2. Create .env file if missing
-3. Start backend server
-4. Start frontend server
-5. Open browser automatically
-
-### Manual Setup
+### 1️⃣ Clone Repository
 
 ```bash
 git clone https://github.com/Rahul-Meena01/mydex-portfolio.git
 cd mydex-portfolio
 ```
+
+### Quick Backend Setup
+
+```bash
+cd backend
+npm install
+cp .env.example .env
+# Edit .env with your configuration (see "Environment Variables" section)
+npm run dev
+```
+
+Then serve the frontend from the `docs/` folder using any static file server (see **5️⃣ Frontend Setup** below).
+
+### Full Manual Setup
 
 ### 2️⃣ Backend Setup
 
@@ -161,8 +150,8 @@ Server will run at `http://localhost:5000`
 ### 5️⃣ Frontend Setup
 
 ```bash
-# Navigate to frontend directory
-cd ../frontend
+# Navigate to the frontend (docs) directory
+cd ../docs
 
 # Edit js/config.js and update production API URL
 # Update line 6 with your deployed backend URL
@@ -185,19 +174,16 @@ Frontend will be available at `http://localhost:3000`
 
 ---
 
-## � Documentation
+## 📋 Documentation
 
 - **[README.md](README.md)** - This file (project overview & quick start)
-- **[DEPLOYMENT.md](DEPLOYMENT.md)** - Complete deployment guide for production
-- **[DEVELOPMENT.md](DEVELOPMENT.md)** - Development guide with examples
-- **[CODE_REVIEW_SUMMARY.md](CODE_REVIEW_SUMMARY.md)** - Code review and improvements summary
 
 ---
 
-## �📂 Project Structure
+## 📂 Project Structure
 
 ```
-project9/
+mydex-portfolio/
 ├── docs/                    # Frontend application (GitHub Pages)
 │   ├── index.html          # Main HTML file
 │   ├── css/
@@ -234,12 +220,8 @@ project9/
 │       └── emailService.js # Email functionality
 │
 ├── .gitignore              # Git ignore rules
-├── start.bat               # Windows quick start script
-├── start.sh                # Mac/Linux quick start script
-├── README.md               # This file
-├── DEPLOYMENT.md           # Deployment guide
-├── DEVELOPMENT.md          # Development guide
-└── CODE_REVIEW_SUMMARY.md  # Code review summary
+├── render.yaml             # Render.com deployment configuration
+└── README.md               # This file
 ```
 
 ---
@@ -439,6 +421,17 @@ curl http://localhost:5000/api/analytics/visitors
 
 ---
 
+## 🔐 Security Features
+
+- Helmet.js for HTTP security headers
+- Rate limiting on analytics endpoints (100 req/15min per IP)
+- Input validation with express-validator
+- MongoDB injection protection via Mongoose
+- Trust proxy configuration for accurate IP tracking
+- CORS with configurable allowed origins
+
+---
+
 ## 📞 Contact & Support
 
 - **GitHub:** [@Rahul-Meena01](https://github.com/Rahul-Meena01)
@@ -449,7 +442,7 @@ curl http://localhost:5000/api/analytics/visitors
 
 ## 📄 License
 
-MIT License - feel free to use this project for your own portfolio!
+MIT License — Free to use and adapt for your own portfolio.
 
 ---
 
@@ -462,28 +455,9 @@ MIT License - feel free to use this project for your own portfolio!
 
 ---
 
+**⭐ If you like this project, give it a star!**
+
 **Made with ❤️ by Rahul Meena**
 
 - **LinkedIn:** [rahul-meena-m3401](https://linkedin.com/in/rahul-meena-m3401)
-- **Instagram:** [@why**\_\_**dude](https://instagram.com/why______dude)
-
----
-
-## 📝 License
-
-MIT License — Free to use and adapt for your own portfolio.
-
----
-
-**⭐ If you like this project, give it a star!**
-
-## 🔐 Security Features
-
-- Helmet.js for HTTP security headers
-- Rate limiting on analytics endpoints (100 req/15min per IP)
-- Input validation with express-validator
-- MongoDB injection protection via Mongoose
-- Trust proxy configuration for accurate IP tracking
-- CORS with configurable allowed origins
-
-_Last updated: December 2025 — Production Ready & Hardened_
+- **Instagram:** [@why\_\_\_\_\_\_dude](https://instagram.com/why______dude)
