@@ -5,14 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Trainer Rahul's Pokédex Portfolio — projects, skills, badges, and contact form powered by a MERN backend with analytics.">
-    <meta name="theme-color" content="#e3350d">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+        content="Trainer Rahul — Pokédex Entry No. 001. Full-Stack Developer portfolio showcasing projects, skills, and achievements in a Pokémon-inspired interface.">
+    <meta name="theme-color" content="#1a1a2e">
 
-    <title>Trainer Rahul's Pokédex</title>
+    <!-- Open Graph -->
+    <meta property="og:title" content="Trainer Rahul's Pokédex — Entry No. 001">
+    <meta property="og:description" content="Full-Stack Developer. Catch this trainer's projects, skills & achievements.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rahul-meena01.github.io/mydex-portfolio/">
+
+    <title>Pokédex Entry #001 — Trainer Rahul</title>
+
+    <!-- Preconnects -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
     <link rel="icon" href="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"
         type="image/png">
 </head>
@@ -22,241 +38,220 @@
 
     <div class="pokedex-container">
         <header class="pokedex-header">
-            <h1 class="trainer-title">Trainer Rahul's Pokédex</h1>
-            <div class="pokedex-lights">
-                <div class="light red"></div>
-                <div class="light yellow"></div>
-                <div class="light green"></div>
+            <div class="header-top-row">
+                <div class="scanning-light" aria-hidden="true"></div>
+                <h1 class="header-title">POKÉDEX</h1>
+                <div class="header-lights" aria-hidden="true">
+                    <span class="h-light red"></span>
+                    <span class="h-light yellow"></span>
+                    <span class="h-light green"></span>
+                </div>
             </div>
         </header>
 
         <nav class="pokedex-nav" role="navigation" aria-label="Primary">
-            <button class="nav-btn active" data-section="landing" aria-controls="landing">Trainer Card</button>
-            <button class="nav-btn" data-section="projects" aria-controls="projects">Projects</button>
-            <button class="nav-btn" data-section="badges" aria-controls="badges">Badges</button>
-            <button class="nav-btn" data-section="moves" aria-controls="moves">Moves List</button>
-            <button class="nav-btn" data-section="skills" aria-controls="skills">Skills</button>
-            <button class="nav-btn" data-section="resume" aria-controls="resume">Resume</button>
-            <button class="nav-btn" data-section="contact" aria-controls="contact">Contact</button>
+            <button class="nav-btn active" data-section="landing" aria-controls="landing" id="nav-trainer">Trainer Card</button>
+            <button class="nav-btn" data-section="projects" aria-controls="projects" id="nav-projects">Projects</button>
+            <button class="nav-btn" data-section="skills" aria-controls="skills" id="nav-skills">Skills</button>
+            <button class="nav-btn" data-section="resume" aria-controls="resume" id="nav-resume">Resume</button>
+            <button class="nav-btn" data-section="contact" aria-controls="contact" id="nav-contact">Contact</button>
         </nav>
 
         <main class="pokedex-main">
             <div class="pokedex-screen">
+
+                <!-- ═══════════ TRAINER CARD / POKÉDEX ENTRY ═══════════ -->
                 <section id="landing" class="section active">
-                    <div class="trainer-card-enhanced">
-                        <div class="trainer-card-header">
-                            <div class="pokeball-design">
-                                <div class="pokeball-top"></div>
-                                <div class="pokeball-center">
-                                    <div class="pokeball-button"></div>
-                                </div>
-                                <div class="pokeball-bottom"></div>
+                    <div class="dex-entry-card">
+                        <!-- Pokédex Entry Header -->
+                        <div class="dex-entry-header">
+                            <div class="scanning-indicator">
+                                <span class="scan-dot"></span>
+                                <span class="scan-label">SCANNING...</span>
                             </div>
-                            <h1 class="trainer-card-title">Trainer ID Card</h1>
+                            <span class="entry-number">No. 001</span>
                         </div>
 
-                        <div class="trainer-card-body">
-                            <div class="trainer-avatar-section">
-                                <div class="trainer-avatar-frame">
-                                    <div class="avatar-glow"></div>
-                                    <img src="https://i.pinimg.com/736x/39/66/35/3966359026acda12efe2368bca73f4f3.jpg"
-                                        alt="Trainer Rahul Avatar" class="trainer-avatar-img" loading="lazy" />
-                                </div>
-                                <div class="trainer-basic-info">
-                                    <h2 class="trainer-name-enhanced">Rahul</h2>
-                                    <p class="trainer-title-enhanced">Full-Stack Web Developer</p>
-                                    <div class="trainer-level-badge">
-                                        <span class="level-text">Level</span>
-                                        <span class="level-number">21</span>
-                                    </div>
-                                    <div class="social-links">
-                                        <a href="https://github.com/Rahul-Meena01" target="_blank"
-                                            rel="noopener noreferrer" class="social-link" aria-label="GitHub profile">
-                                            <i class="fab fa-github"></i>
-                                        </a>
-                                        <a href="https://linkedin.com/in/rahul-meena-m3401" target="_blank"
-                                            rel="noopener noreferrer" class="social-link" aria-label="LinkedIn profile">
-                                            <i class="fab fa-linkedin"></i>
-                                        </a>
-                                        <a href="https://instagram.com/why______dude" target="_blank"
-                                            rel="noopener noreferrer" class="social-link"
-                                            aria-label="Instagram profile">
-                                            <i class="fab fa-instagram"></i>
-                                        </a>
-                                    </div>
+                        <!-- Entry Name & Type -->
+                        <div class="dex-entry-identity">
+                            <h2 class="dex-entry-name">RAHUL</h2>
+                            <div class="dex-entry-types">
+                                <span class="type-badge-role fire">Full-Stack</span>
+                                <span class="type-badge-role water">Developer</span>
+                            </div>
+                        </div>
 
-                                    <div id="like-section"
-                                        style="margin: 32px 0 0 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                                        <button id="like-btn" class="like-btn big-stylish" aria-live="polite"
-                                            aria-label="Like this portfolio">
-                                            <span id="like-heart" class="like-heart">♡</span>
-                                        </button>
-                                        <span id="like-count" class="like-count big-count" aria-live="polite">0</span>
-                                        <span id="like-loading" class="like-loading"
-                                            style="display:none; margin-top:10px; font-size:16px; color:#888;">Loading...</span>
-                                    </div>
+                        <!-- Avatar + Stats Row -->
+                        <div class="dex-entry-body">
+                            <div class="dex-avatar-col">
+                                <div class="dex-avatar-frame">
+                                    <div class="avatar-ring" aria-hidden="true"></div>
+                                    <img src="https://i.pinimg.com/736x/39/66/35/3966359026acda12efe2368bca73f4f3.jpg"
+                                        alt="Trainer Rahul Avatar" class="dex-avatar-img" loading="lazy" width="180" height="180">
+                                </div>
+                                <div class="trainer-level">
+                                    <span class="level-label">LV</span>
+                                    <span class="level-val">21</span>
+                                </div>
+                                <div class="social-links">
+                                    <a href="https://github.com/Rahul-Meena01" target="_blank"
+                                        rel="noopener noreferrer" class="social-link" aria-label="GitHub profile" id="social-github">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="https://linkedin.com/in/rahul-meena-m3401" target="_blank"
+                                        rel="noopener noreferrer" class="social-link" aria-label="LinkedIn profile" id="social-linkedin">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                    <a href="https://instagram.com/why______dude" target="_blank"
+                                        rel="noopener noreferrer" class="social-link" aria-label="Instagram profile" id="social-instagram">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </div>
+
+                                <!-- Like Button -->
+                                <div id="like-section" class="like-section">
+                                    <button id="like-btn" class="like-btn" aria-live="polite" aria-label="Like this portfolio">
+                                        <span id="like-heart" class="like-heart">♡</span>
+                                    </button>
+                                    <span id="like-count" class="like-count" aria-live="polite">0</span>
                                 </div>
                             </div>
 
-                            <div class="trainer-info-section">
-                                <div class="trainer-stats-grid" role="list" aria-label="Trainer statistics">
-                                    <div class="stat-card">
-                                        <div class="stat-icon">🏆</div>
-                                        <div class="stat-content">
-                                            <div class="stat-value">5+</div>
-                                            <div class="stat-label">Projects</div>
+                            <div class="dex-info-col">
+                                <div class="dex-stats-grid" role="list" aria-label="Trainer statistics">
+                                    <div class="dex-stat-card">
+                                        <span class="dex-stat-icon">🏆</span>
+                                        <div class="dex-stat-info">
+                                            <span class="dex-stat-value">5+</span>
+                                            <span class="dex-stat-label">Projects</span>
                                         </div>
                                     </div>
-                                    <div class="stat-card">
-                                        <div class="stat-icon">⚡</div>
-                                        <div class="stat-content">
-                                            <div class="stat-value">1</div>
-                                            <div class="stat-label">Years Exp</div>
+                                    <div class="dex-stat-card">
+                                        <span class="dex-stat-icon">⚡</span>
+                                        <div class="dex-stat-info">
+                                            <span class="dex-stat-value">1</span>
+                                            <span class="dex-stat-label">Years Exp</span>
                                         </div>
                                     </div>
-                                    <div class="stat-card">
-                                        <div class="stat-icon">🌟</div>
-                                        <div class="stat-content">
-                                            <div class="stat-value">10+</div>
-                                            <div class="stat-label">Skills</div>
+                                    <div class="dex-stat-card">
+                                        <span class="dex-stat-icon">🌟</span>
+                                        <div class="dex-stat-info">
+                                            <span class="dex-stat-value">10+</span>
+                                            <span class="dex-stat-label">Skills</span>
                                         </div>
                                     </div>
-                                    <div class="stat-card">
-                                        <div class="stat-icon">📍</div>
-                                        <div class="stat-content">
-                                            <div class="stat-value">Jaipur</div>
-                                            <div class="stat-label">Location</div>
-                                        </div>
-                                    </div>
-                                    <div class="stat-card" id="visitors-stat">
-                                        <div class="stat-icon">👥</div>
-                                        <div class="stat-content">
-                                            <div class="stat-value" id="visitors-count">...</div>
-                                            <div class="stat-label">Visitors</div>
+                                    <div class="dex-stat-card">
+                                        <span class="dex-stat-icon">📍</span>
+                                        <div class="dex-stat-info">
+                                            <span class="dex-stat-value">Jaipur</span>
+                                            <span class="dex-stat-label">Region</span>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="trainer-specialty">
+                                <div class="dex-specialty">
                                     <h3 class="specialty-title">Specialty</h3>
                                     <div class="specialty-tags">
-                                        <span class="specialty-tag react">React.js</span>
-                                        <span class="specialty-tag node">Node.js</span>
-                                        <span class="specialty-tag mongo">MongoDB</span>
-                                        <span class="specialty-tag express">Express.js</span>
+                                        <span class="specialty-tag" style="--tag-color: #61dafb;">React.js</span>
+                                        <span class="specialty-tag" style="--tag-color: #68a063;">Node.js</span>
+                                        <span class="specialty-tag" style="--tag-color: #4db33d;">MongoDB</span>
+                                        <span class="specialty-tag" style="--tag-color: #404040;">Express.js</span>
                                     </div>
-                                </div>
-
-                                <div class="trainer-bio-enhanced">
-                                    <h3 class="bio-title">About Me</h3>
-                                    <p class="bio-text">
-                                        Passionate Full-Stack Developer specializing in MERN stack with 1 years of
-                                        experience
-                                        creating responsive, high-performance web applications. I love turning ideas
-                                        into
-                                        digital reality through clean code and innovative solutions.
-                                    </p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="trainer-card-footer">
+                        <!-- Pokédex Description -->
+                        <div class="pokedex-description">
+                            <h3 class="pokedex-desc-title">POKÉDEX DESCRIPTION</h3>
+                            <p class="pokedex-desc-text">
+                                A passionate Full-Stack Developer from the Jaipur region, specializing in MERN stack technologies. Known for turning ideas into high-performance web applications through clean code and innovative solutions. Often found in the wild building responsive interfaces.
+                            </p>
+                        </div>
+
+                        <div class="dex-entry-footer">
                             <p class="navigation-hint">
-                                🎮 Explore my Pokédex to discover projects, skills, and achievements!
+                                🎮 Navigate the Pokédex to discover projects, skills & achievements!
                             </p>
                         </div>
                     </div>
                 </section>
 
+                <!-- ═══════════ PROJECTS ═══════════ -->
                 <section id="projects" class="section">
                     <h2 class="section-header">Pokédex Projects</h2>
-                    <div class="projects-grid"></div>
+                    <div class="projects-grid" id="projects-grid"></div>
                 </section>
 
-                <section id="badges" class="section">
-                    <h2 class="section-header">Gym Badges</h2>
-                    <div class="badges-grid"></div>
-                </section>
-
-                <section id="moves" class="section">
-                    <h2 class="section-header">Moves List</h2>
-                    <div class="moves-list">
-                        <div class="moves-category">
-                            <h3 class="moves-category-title">Frontend Moves</h3>
-                            <div class="moves-grid"></div>
-                        </div>
-                        <div class="moves-category">
-                            <h3 class="moves-category-title">Backend Moves</h3>
-                            <div class="moves-grid"></div>
-                        </div>
-                        <div class="moves-category">
-                            <h3 class="moves-category-title">Development Tools</h3>
-                            <div class="moves-grid"></div>
-                        </div>
-                        <div class="moves-category">
-                            <h3 class="moves-category-title">Soft Skills</h3>
-                            <div class="moves-grid"></div>
-                        </div>
-                    </div>
-                </section>
-
+                <!-- ═══════════ SKILLS TYPE-CHART ═══════════ -->
                 <section id="skills" class="section">
-                    <h2 class="section-header">Technical Skills</h2>
-                    <div class="skills-container"></div>
+                    <h2 class="section-header">Type Chart — Skills</h2>
+                    <div class="type-chart-grid" id="type-chart-grid"></div>
                 </section>
 
+                <!-- ═══════════ RESUME ═══════════ -->
                 <section id="resume" class="section">
                     <h2 class="section-header">Resume Details</h2>
                     <div class="resume-container">
-                        <div class="resume-column"></div>
-                        <div class="resume-column"></div>
+                        <div class="resume-column" id="resume-col-1"></div>
+                        <div class="resume-column" id="resume-col-2"></div>
                     </div>
-                    <a href="#" class="download-resume" aria-label="Download resume">
+                    <a href="#" class="download-resume" aria-label="Download resume" id="download-resume-btn">
                         <i class="fas fa-download"></i> Download Full Resume (PDF)
                     </a>
                 </section>
 
+                <!-- ═══════════ CONTACT ═══════════ -->
                 <section id="contact" class="section">
-                    <h2 class="section-header">Contact Me</h2>
+                    <h2 class="section-header">Send a Message</h2>
                     <form id="contact-form" class="contact-form">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required placeholder="Your Name" />
+                            <input type="text" id="name" name="name" required placeholder="Your Name" autocomplete="name">
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required placeholder="your@email.com" />
+                            <input type="email" id="email" name="email" required placeholder="your@email.com" autocomplete="email">
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" name="message" required
-                                placeholder="Type your message..."></textarea>
+                            <textarea id="message" name="message" required placeholder="Type your message..."></textarea>
                         </div>
-                        <button type="submit" class="contact-btn">Send Message</button>
+                        <button type="submit" class="contact-btn" id="contact-submit">Send Message</button>
                         <div id="contact-status" class="contact-status"></div>
                     </form>
                 </section>
+
             </div>
         </main>
     </div>
 
-    <div class="project-modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
+    <!-- ═══════════ POKÉBALL EASTER EGG ═══════════ -->
+    <button class="pokeball-easter-egg" id="pokeball-ee" aria-label="Secret Pokéball" title="Try clicking me!">
+        <svg viewBox="0 0 100 100" width="40" height="40" aria-hidden="true">
+            <circle cx="50" cy="50" r="48" fill="#333" stroke="#222" stroke-width="3"/>
+            <path d="M2,50 A48,48 0 0,1 98,50 Z" fill="#EE1515"/>
+            <path d="M2,50 A48,48 0 0,0 98,50 Z" fill="#f0f0f0"/>
+            <rect x="2" y="47" width="96" height="6" fill="#333"/>
+            <circle cx="50" cy="50" r="14" fill="#333" stroke="#333" stroke-width="3"/>
+            <circle cx="50" cy="50" r="9" fill="#f0f0f0" stroke="#333" stroke-width="2"/>
+            <circle cx="50" cy="50" r="5" fill="#fff" class="pokeball-inner-btn"/>
+        </svg>
+    </button>
+
+    <!-- Toast container -->
+    <div class="pokeball-toast" id="pokeball-toast" role="alert" aria-live="assertive">
+        <div class="toast-content">
+            <p class="toast-text">✨ <strong>Rahul</strong> was caught! Add to team?</p>
+            <button class="toast-yes-btn" id="toast-yes-btn">Yes! 🎉</button>
         </div>
     </div>
 
-    <div class="badge-modal">
-        <div class="badge-modal-content">
-            <span class="close-badge-modal">&times;</span>
-        </div>
-    </div>
-
-    <!-- Load config first, then analytics tracker, then main script (deferred for performance) -->
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script>
     <script src="js/config.js" defer></script>
-    <script src="js/analytics-tracker.js" defer></script>
     <script src="js/script.js" defer></script>
-    <noscript>Your browser has JavaScript disabled. Some features of this Pokédex require JavaScript.</noscript>
+    <noscript>Your browser has JavaScript disabled. This Pokédex requires JavaScript to function.</noscript>
 </body>
 
 </html>
