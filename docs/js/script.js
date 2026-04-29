@@ -123,7 +123,7 @@ const portfolioData = {
       complexity: 5,
       type: { name: "Security", class: "electric" },
       techStack: ["TypeScript", "React", "Vercel"],
-      demoLink: "https://after-me-woad.vercel.app",
+      demoLink: "",
       githubLink: "https://github.com/Rahul-Meena01/AfterMe",
     },
     {
